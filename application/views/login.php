@@ -14,7 +14,7 @@
     <div class="container" style="padding-top: 10px;">
       <h3>LOG IN</h3>
       <hr>
-      <form method="post" name="LOGINUSER" action="<?php echo base_url().'index.php/CarModel/canlogin';?>" >
+      <form method="post" name="LOGINUSER" action="<?php echo base_url().'index.php/user/canlogin';?>" >
 
         <div class="row">
           <div class="col-md-12">
@@ -50,16 +50,18 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Email</label>
-            <input type="email" name="email" value="" class="form-control">
+            <input type="email" name="email" value="<?php set_value('email');?>" class="form-control">
+            <?php echo form_error('email');?>
 
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" name="password" value="" class="form-control">
+            <input type="password" name="password" value="<?php set_value('password');?>" class="form-control">
+            <?php echo form_error('password');?>
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-primary">LOG IN</button>
-            <a href="<?php echo base_url().'index.php/CarModel/login'; ?>" class="btn-secondary btn">Cancel</a>
+            <button class="btn btn-primary">LOG IN</button>
+            <a href="<?php echo base_url().'index.php/user/index'; ?>" class="btn-secondary btn">Cancel</a>
 
           </div>
         </div>
@@ -68,7 +70,7 @@
        <div class="col-md-8">
          <div class="row">
            <div class="col-6"><p>New Here ? Register YourSelf...</p></div>
-             <div class="col-6"> <a href="<?php echo base_url().'index.php/CarModel/showCreateModel' ?>" class="btn btn-primary">Register</a></div>
+             <div class="col-6"> <a href="<?php echo base_url().'index.php/user/create' ?>" class="btn btn-primary">Register</a></div>
 
          </div>
 

@@ -1,36 +1,43 @@
-<form action="" method="post" id="editing" name="edit">
-  <input type="hidden" name="id" value="<?php echo $row['id']?>">
-<div class="modal-body">
-      	<div class="form-group">
-      		<label>Name</label>
-      		<input type="text" name="name" id="name" value="<?php echo $row['name']?>" class="form-control">
-      		<p class="nameError"></p>
-      	</div>
-       <div class="form-group">
-      		<label>Color</label>
-      		<input type="text" name="color" id="color" value="<?php echo $row['color']?>" class="form-control">
-      		<p class="colorError"></p>
-
-      	</div>
-       <div class="form-group">
-      		<label>STATUS</label>
-      		<select id="transmission" name="transmission" class="form-control">
-      			<option value="Automatic" <?php echo ($row['transmission'] == "Approved") ?'selected': ''?>>Approved</option>
-      			<option value="Manual" <?php echo ($row['transmission'] == "NotApproved") ?'selected': ''?>>Not Approved</option>
-
-      			
-      		</select>
-      	</div>
-       <div class="form-group">
-      		<label>Price</label>
-      		<input type="text" name="price" id="price" value="<?php echo $row['price']?>" class="form-control">
-      		<p class="priceError"></p>
-
-      	</div>
-       
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CRUD</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/bootstrap.min.css';?>">
+  </head>
+  <body>
+    <div class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <a href="#" class="navbar-brand">CRUD APPLICATION</a>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-      </div>
+    </div>
+    <div class="container" style="padding-top: 10px;">
+      <h3>Update User</h3>
+      <hr>
+      <form method="post" name="createUser" action="<?php echo base_url().'index.php/user/edit/'.$user['id']?>" >
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" value="<?php echo set_value('name',$user['name']);?>" class="form-control">
+            <?php echo form_error('name');?>
+
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="email" value="<?php echo set_value('email',$user['email']);?>" class="form-control">
+            <?php echo form_error('email');?>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Update</button>
+            <a href="<?php echo base_url().'index.php/user/index'; ?>" class="btn-secondary btn">Cancel</a>
+
+          </div>
+        </div>
+     </div>
+
+   </div>
 </form>
+  </body>
+</html>

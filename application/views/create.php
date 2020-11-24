@@ -1,35 +1,48 @@
-<form action="" method="post" id="createCar" name="create">
-<div class="modal-body">
-      	<div class="form-group">
-      		<label>Name</label>
-      		<input type="text" name="name" id="name" value="" class="form-control" placeholder="Name...">
-      		<p class="nameError"></p>
-      	</div>
-       <div class="form-group">
-      		<label>Color</label>
-      		<input type="text" name="color" id="color" value="" class="form-control" placeholder="Color">
-      		<p class="colorError"></p>
-
-      	</div>
-       <div class="form-group">
-      		<label>STATUS</label>
-      		<select id="transmission" name="transmission" class="form-control">
-      			<option value="Approved">Approved</option>
-      			<option value="NotApproved">Not Approved</option>
-
-      			
-      		</select>
-      	</div>
-       <div class="form-group">
-      		<label>Price</label>
-      		<input type="text" name="price" id="price" value="" class="form-control" placeholder="Price...">
-      		<p class="priceError"></p>
-
-      	</div>
-       
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CRUD</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/css/bootstrap.min.css';?>">
+  </head>
+  <body>
+    <div class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <a href="#" class="navbar-brand">CRUD APPLICATION</a>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
-      </div>
+    </div>
+    <div class="container" style="padding-top: 10px;">
+      <h3>Create User</h3>
+      <hr>
+      <form method="post" name="createUser" action="<?php echo base_url().'index.php/user/create';?>" >
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" value="<?php set_value('name');?>" class="form-control">
+            <?php echo form_error('name');?>
+
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="email" value="<?php set_value('email');?>" class="form-control">
+            <?php echo form_error('email');?>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" value="<?php set_value('password');?>" class="form-control">
+            <?php echo form_error('password');?>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Create</button>
+            <a href="<?php echo base_url().'index.php/user/index'; ?>" class="btn-secondary btn">Cancel</a>
+
+          </div>
+        </div>
+     </div>
+
+   </div>
 </form>
+  </body>
+</html>
