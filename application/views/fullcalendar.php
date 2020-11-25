@@ -8,6 +8,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+"
     <script>
     $(document).ready(function(){
         var calendar = $('#calendar').fullCalendar({
@@ -40,14 +42,20 @@
                 }
             },
             editable:true,
+            resizable: true,
+            allDay: true,
+            selectable:true,
+            selectHelper:true,
             eventResize:function(event)
             {
+              alert("resizing");
                 var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
                 var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 
                 var title = event.title;
 
                 var id = event.id;
+                //allDay: true;
 
                 $.ajax({
                     url:"<?php echo base_url(); ?>index.php/Fullcalendar/update",
@@ -60,6 +68,7 @@
                     }
                 })
             },
+            droppable:true,
             eventDrop:function(event)
             {
                 var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
@@ -96,6 +105,8 @@
                     })
                 }
             }
+
+
         });
     });
 
