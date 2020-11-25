@@ -3,11 +3,13 @@
 
 <form action="<?php echo base_url('index.php/upload_file/dragDropUpload/'); ?>" class="dropzone"></form>
 <?php
-if(!empty($files)){ foreach($files as $row){
+if(!empty($files)){ foreach($files as $row){?>
+  <a href="../index.php/upload_file/deletefile/<?php echo $row['id']?>">Remove file</a>
+<?php
         $filePath = 'uploads/'.$row["file_name"];
         $fileMime = mime_content_type($filePath);
 ?>
-    <embed src="<?php echo base_url('uploads/'.$row["file_name"]); ?>" type="<?php echo $fileMime; ?>" width="350px" height="240px" />
+    <embed src="<?php echo base_url('uploads/'.$row["file_name"]); ?>" type="<?php echo $fileMime; ?>" width="200px" height="200px" />
 <?php
 } }else{
 ?>

@@ -25,7 +25,13 @@ class upload_file extends CI_Controller {
         // Pass the files data to view
         $this->load->view('Upload_File', $data);
     }
-
+    function deletefile($id){
+      printf("ID Here is ".$id);
+      $insert = $this->File->deletefile($id);
+      //$this->load->view('Upload_File', $data);
+      redirect('/Upload_file');
+      exit();
+    }
     function dragDropUpload(){
         if(!empty($_FILES)){
             // File upload configuration

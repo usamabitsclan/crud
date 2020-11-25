@@ -49,7 +49,7 @@ var calendarEl = document.getElementById('calendar');
     eventDurationEditable: true,
     selectable:true,
     events:"<?php echo base_url(); ?>index.php/Fullcalendar/load",
-  
+
 
     select:function(info)
     {
@@ -76,6 +76,8 @@ var calendarEl = document.getElementById('calendar');
         }
     },
 
+    
+
     eventReceive: function(info ) {
 
 
@@ -87,6 +89,7 @@ var calendarEl = document.getElementById('calendar');
       //alert(info.event.id);
     },
      eventClick: function(event, element) {
+
 
 
   event.title = "CLICKED!";
