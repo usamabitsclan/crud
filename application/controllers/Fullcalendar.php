@@ -28,7 +28,8 @@ class Fullcalendar extends CI_Controller {
     'title' => $row['title'],
     'start' => $row['start_event'],
     'end' => $row['end_event'],
-    'color' => '#'.$row['color']
+    'color' => '#'.$row['color'],
+    'allDay' => false,
     //'color' => $row['color']
     //'#'+Math.random().toString(16).substr(-6).substr(-1)
    );
