@@ -32,7 +32,9 @@ class upload_file extends CI_Controller {
       redirect('/Upload_file');
       exit();
     }
+    
     function dragDropUpload(){
+
         if(!empty($_FILES)){
             // File upload configuration
             $uploadPath = 'uploads/';

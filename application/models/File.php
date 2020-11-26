@@ -35,6 +35,12 @@ class File extends CI_Model{
         }
 
     }
+    function deleteefile($name){
+      $this->db->select('id,file_name,uploaded_on');
+      $this->db->from('files');
+      $this->db->where('file_name',$name);
+      $query = $this->db->delete();
+    }
 
     /*
      * Insert file data into the database

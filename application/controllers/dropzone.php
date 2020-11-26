@@ -1,5 +1,5 @@
 <?php
-$target_dir = "upload/"; // Upload directory
+$target_dir = "Uploaads/"; // Upload directory
 
 $request = 1;
 if(isset($_POST['request'])){

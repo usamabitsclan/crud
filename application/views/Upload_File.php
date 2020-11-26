@@ -1,7 +1,11 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/js/dropzone/dropzone.min.css" />
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/dropzone/dropzone.min.js"></script>
 
-<form action="<?php echo base_url('index.php/upload_file/dragDropUpload/'); ?>" class="dropzone"></form>
+<form action="<?php echo base_url('index.php/upload_file/dragDropUpload/'); ?>" class="dropzone">
+<div>
+  
+</div>
+</form>
 <?php
 if(!empty($files)){ foreach($files as $row){?>
   <a href="../index.php/upload_file/deletefile/<?php echo $row['id']?>">Remove file</a>

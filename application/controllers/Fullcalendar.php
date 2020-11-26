@@ -11,9 +11,47 @@ class Fullcalendar extends CI_Controller {
   $this->load->helper('randomColor_helper');
 
  }
+ function phpdropzone(){
+   foreach($myitemfiles as $file){ //get an array which has the names of all the files and loop through it
+        $obj['name'] = $file; //get the filename in array
+        $obj['size'] = filesize("Uploaads/".$file); //get the flesize in array
+        $result[] = $obj; // copy it to another array
+      }
+       header('Content-Type: application/json');
+       echo json_encode($result); // now you have a json response which you can use in client side
+ }
 function dropzone(){
   $this->load->view('dropzone');
 
+}
+function getimages(){
+  $this->load->model('File');
+  $data = array();
+
+  // Get files data from the database
+  $data['files'] = $this->File->getRows();
+  $data = $data['files'];
+  //var_dump($data);
+  // Pass the files data to view
+  echo json_encode($data);
+}
+function removedropzone(){
+  $uploadDir = 'Uploads';
+
+if ($_POST['request'] == "add") {
+    if (!empty($_FILES)) {
+     $tmpFile = $_FILES['file']['tmp_name'];
+     $filename = $uploadDir.'/'.$_FILES['file']['name'];
+     move_uploaded_file($tmpFile,$filename);
+    }
+}else{
+
+    $this->load->model('File');
+    $name = $_POST['name'];
+    $this->File->deleteefile($name);
+    $fileName = $uploadDir.'/'.$_POST['name'];
+    unlink($fileName);
+}
 }
 function uploadphp(){
   $target_dir = "Uploads/"; // Upload directory
@@ -25,6 +63,7 @@ function uploadphp(){
 
   // Upload file
   if($request == 1){
+    //$filename = $target_dir.$_POST['name'];
     $target_file = $target_dir . basename($_FILES["file"]["name"]);
     $msg = "";
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_dir.$_FILES['file']['name'])) {

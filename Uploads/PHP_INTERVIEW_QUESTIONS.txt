@@ -1,0 +1,4 @@
+Magic Methods:
+	PHP functions that start with a double underscore – a “__” – are called magic functions (and/or methods) in PHP. 
+	They are functions that are always defined inside classes, and are not stand-alone (outside of classes) functions.
+	
