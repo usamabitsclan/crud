@@ -8,6 +8,23 @@ class upload_file extends CI_Controller {
         // Load file model
         $this->load->model('File');
     }
+    function load(){
+      $this->load->view('testingapi');
+    }
+    function mapping(){
+      $this->load->library('googlemaps');
+
+      $config['center'] = '37.4419, -122.1419';
+      $config['zoom'] = 'auto';
+      $config['places'] = TRUE;
+      $config['placesAutocompleteInputID'] = 'myPlaceTextBox';
+      $config['placesAutocompleteBoundsMap'] = TRUE; // set results biased towards the maps viewport
+      $config['placesAutocompleteOnChange'] = 'alert(\'You selected a place\');';
+      $this->googlemaps->initialize($config);
+      $data['map'] = $this->googlemaps->create_map();
+
+      $this->load->view('view_file', $data);
+    }
 
     function googleapi(){
       $this->load->library('googlemaps');
@@ -32,7 +49,7 @@ class upload_file extends CI_Controller {
       redirect('/Upload_file');
       exit();
     }
-    
+
     function dragDropUpload(){
 
         if(!empty($_FILES)){
